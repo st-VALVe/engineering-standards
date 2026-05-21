@@ -129,6 +129,8 @@ If the plan does not address these, it is incomplete. Do NOT defer edge case thi
 2. **Bug fixes**: Must include a regression test that fails without the fix and passes with it.
 3. **Refactoring**: Existing tests must continue to pass. Add tests if coverage is insufficient for the refactored area.
 4. **Legacy code**: see Edge Cases & Special Scenarios → Legacy Code.
+5. **Tests derive from the spec, not from observed behavior.** Assertions come from the task statement, never from running the code and asserting the output. If you cannot write the test without seeing the implementation, the spec is too vague — clarify it first.
+6. **Tests must be authored outside the implementation context** — by a different person, agent, or session, working from the spec only. Self-authored tests are forbidden except in throwaway prototypes.
 
 ### Test Quality
 
