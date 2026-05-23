@@ -4,6 +4,15 @@ These rules apply to **ALL projects** and **ALL code changes**. Every AI assista
 
 ---
 
+## Prime Directive: Minimize Code Through Quality
+
+- Measure success by code removed or held constant, not by code added.
+- A modification or rewrite must leave the artifact equal or smaller. Growth requires per-line justification.
+- No scope expansion mid-change. Coverage gaps, missing exports, edge cases — separate tickets.
+- Diff line count and artifact count after every change. Unjustified growth — revert.
+
+---
+
 ## Core Working Principles
 
 Four principles frame how every task is approached. They override default tendencies and apply before any other rule in this document.
