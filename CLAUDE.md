@@ -140,6 +140,7 @@ If the plan does not address these, it is incomplete. Do NOT defer edge case thi
 4. **Legacy code**: see Edge Cases & Special Scenarios → Legacy Code.
 5. **Tests derive from the spec, not from observed behavior.** Assertions come from the task statement, never from running the code and asserting the output. If you cannot write the test without seeing the implementation, the spec is too vague — clarify it first.
 6. **Tests must be authored outside the implementation context** — by a different person, agent, or session, working from the spec only. Self-authored tests are forbidden except in throwaway prototypes.
+7. **Never edit tests after observing their output.** After writing (or delegating writing of) test files, STOP — do not run them, read results, or adjust assertions, mocks, or setup based on observed errors. Hand verification to the user or a fresh session. Delegating to sub-agents does not grant the orchestrator a "different agent" exemption — the orchestrator is the author. If the user reports a failure, the fix must cite a spec clause, not the error message.
 
 ### Test Quality
 
