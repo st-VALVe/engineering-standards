@@ -62,6 +62,22 @@ Four principles frame how every task is approached. They override default tenden
   2. [Step] → verify: [check]
 - Strong, testable success criteria let work proceed independently. Weak criteria ("make it work") cause drift and require constant re-clarification.
 
+### Reviews and Subagents
+
+- Gate merges, not plans. Plans get one sanity pass.
+- Reviewer gate by blast radius: schema/RLS, auth, payments, data deletion, deploy, public data exposure — two reviewers, strongest available model from each of two different vendors. Ordinary features — one. Test-only, docs, config — none.
+- Findings are BLOCKING (correctness, security, data loss, contract violation) or ADVISORY. Only BLOCKING gates; ADVISORY becomes a follow-up issue.
+- Two rounds max. Round two: same reviewer session, diff only. Still blocked after round two — escalate to the owner.
+- One verdict per round. No reviewer dialogue.
+- Reviewer timeout or unavailability: retry once, then proceed with one reviewer and record the gap in the ticket.
+- CI outranks reviewers on anything CI can execute.
+- Large tasks: the main session orchestrates; subagents do the work and return results, not process detail.
+- Pick each subagent's model by task difficulty: cheapest tier that solves it; top tier only for judgment-critical review and architecture.
+- Log every model choice and its reason in the session or ticket.
+- Launch prompts reference this section; never restate review policy inline.
+- Reviewer approval authorizes the technical direction only. It does not grant publication, deployment, destructive-action, or external-mutation authority.
+- Never delegate product direction, business priorities, scope intent, or owner vision. Ask the owner and wait for an answer.
+
 ---
 
 ## Prompt Writing
@@ -261,6 +277,7 @@ Whenever a task is fully delivered — shipped, deployed, and verified — the a
    - **Files changed** — brief list of the primary files/modules touched (pointers, not full diff).
    - **Verification** — explicit evidence it works: CI run link, test counts (`N/N passing`), live smoke results (sample input → sample output), deploy confirmation. Never claim "tested" without artefacts.
    - **Out of scope / follow-up** — anything explicitly deferred, with a pointer to the follow-up ticket if one exists.
+   - **Session cost** — for agent-executed work: total tokens spent and wall-clock time, so cost regressions are visible in the tracker instead of discovered by accident.
 2. **Attach external links** where the tracker supports it (Linear `links` field, GitHub linked-PRs, Jira remote links) so the commit/PR is discoverable from the ticket page, not buried in a comment.
 3. **Transition the status** to the tracker's terminal state (`Done`, `Closed`, `Completed`, etc.) only after the note is posted. Never close silently.
 4. **Ask before closing parent epics / initiatives.** A sub-ticket being done does not mean the parent is done — confirm scope with the user.
