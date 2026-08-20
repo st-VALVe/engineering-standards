@@ -67,7 +67,9 @@ Four principles frame how every task is approached. They override default tenden
 - Gate merges, not plans. Plans get one sanity pass.
 - Reviewer gate by blast radius: schema/RLS, auth, payments, data deletion, deploy, public data exposure — two reviewers, strongest available model from each of two different vendors. Ordinary features — one. Test-only, docs, config — none.
 - Findings are BLOCKING (correctness, security, data loss, contract violation) or ADVISORY. Only BLOCKING gates; ADVISORY becomes a follow-up issue.
-- Two rounds max. Round two: same reviewer session, diff only. Still blocked after round two — escalate to the owner.
+- Two rounds max per artifact state. Round two: same reviewer session, diff only.
+- BLOCKING findings are fixed autonomously and re-verified delta-only by the same reviewer session; a fix starts a new artifact state.
+- Escalate to the owner only for product/business decisions, or when the same finding survives two fix cycles (technical deadlock). Purely technical questions are never owner escalations.
 - One verdict per round. No reviewer dialogue.
 - Reviewer timeout or unavailability: retry once, then proceed with one reviewer and record the gap in the ticket.
 - CI outranks reviewers on anything CI can execute.
