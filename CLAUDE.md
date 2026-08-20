@@ -75,6 +75,8 @@ Four principles frame how every task is approached. They override default tenden
 - CI outranks reviewers on anything CI can execute.
 - Large tasks: the main session orchestrates; subagents do the work and return results, not process detail.
 - Pick each subagent's model by task difficulty: cheapest tier that solves it; top tier only for judgment-critical review and architecture.
+- Maximum reasoning-effort settings are for blast-radius reviews only; ordinary reviews run at default effort.
+- One execution session per child task: start it fresh, give it a narrow brief, end it at the completion note. Follow-up fixes and hotfixes for that same child stay in its session — a long-lived session pays its full context on every step, and re-reading doctrine costs more than it saves for a small change.
 - Log every model choice and its reason in the session or ticket.
 - Launch prompts reference this section; never restate review policy inline.
 - Reviewer approval authorizes the technical direction only. It does not grant publication, deployment, destructive-action, or external-mutation authority.
