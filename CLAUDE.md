@@ -70,6 +70,8 @@ Four principles frame how every task is approached. They override default tenden
 - Two rounds max per artifact state. Round two: same reviewer session, diff only.
 - BLOCKING findings are fixed autonomously and re-verified delta-only by the same reviewer session; a fix starts a new artifact state.
 - Escalate to the owner only for product/business decisions, or when the same finding survives two fix cycles (technical deadlock). Purely technical questions are never owner escalations.
+- Never block on a pending owner decision: take a reversible default or an explicitly marked placeholder, record the open question, and keep working. Deliver all owner decisions as one batched list at the end of the task.
+- Placeholders must be marked and source-traceable, and must never reach public or production-facing output. Anything externally visible, or that asserts facts about a real person or business, waits for owner approval regardless of schedule pressure.
 - One verdict per round. No reviewer dialogue.
 - Reviewer timeout or unavailability: retry once, then proceed with one reviewer and record the gap in the ticket.
 - CI outranks reviewers on anything CI can execute.
