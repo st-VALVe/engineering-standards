@@ -15,7 +15,7 @@ Apply rules in this order:
 
 Use the narrowest interpretation that preserves safety while advancing the task.
 
-Stop only when continuing would exceed authority, risk irreversible harm, overwrite another writer, or bypass a required failing gate.
+Stop the task only when continuing would exceed authority, risk irreversible harm, overwrite another writer, or bypass a required failing gate.
 
 Adapt the workflow when an optional capability is unavailable. Missing tooling alone is not a reason to stop.
 
@@ -24,8 +24,9 @@ Adapt the workflow when an optional capability is unavailable. Missing tooling a
 Require explicit owner authorization before:
 
 - mutating production systems or data;
-- making private content public;
+- making content or systems publicly accessible when they were not already;
 - performing irreversible deletion;
+- performing any other irreversible external action not explicitly authorized by the task;
 - rotating credentials the agent did not issue;
 - deleting or force-updating work owned by another writer;
 - sending external communications not already authorized by the task.
@@ -122,7 +123,7 @@ Configuration and documentation changes require an appropriate validation method
 
 Tests must express requirements independently of the implementation.
 
-The implementer may repair test syntax, setup, fixtures, imports, and execution infrastructure.
+The implementer may make mechanical repairs needed to execute a test when they preserve the stated requirement and expected behavior.
 
 Do not change expected behavior merely to make an incorrect implementation pass.
 
@@ -140,7 +141,9 @@ Classify changes by their potential effect, not by file type.
 
 Low-impact changes that cannot alter runtime behavior, access, deployment, or data may rely on automated verification.
 
-Ordinary behavior changes require one independent review.
+Ordinary behavior changes should receive one independent review when available.
+
+When independent review is unavailable for ordinary-risk work, strengthen automated verification, perform a documented self-review against the acceptance criteria, and disclose the limitation.
 
 Changes affecting security, identity, access, payments, destructive operations, schemas, production delivery, or public data require two independent reviews.
 
@@ -154,7 +157,7 @@ Review only the changed candidate and the evidence needed to assess it.
 
 Use a finite review budget. When it is exhausted, stop the review loop, preserve the candidate, and report unresolved findings.
 
-Unavailable required review blocks delivery but does not invalidate safe local work already completed.
+Unavailable review does not block ordinary-risk delivery when that fallback is completed. Missing required high-impact review blocks delivery but does not invalidate safe local work already completed.
 
 Passing review never overrides failing required checks or missing authority.
 

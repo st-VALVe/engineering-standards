@@ -1,6 +1,6 @@
 # Engineering Standards
 
-A vendor-neutral, dropped-in standards file for AI coding assistants (Claude Code, Cursor, GitHub Copilot, etc.) and humans alike.
+A vendor-neutral, drop-in standards file for AI coding assistants.
 
 ## What's here
 
