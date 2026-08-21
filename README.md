@@ -1,20 +1,18 @@
 # Engineering Standards
 
-A vendor-neutral, dropped-in standards file for AI coding assistants (Claude Code, Cursor, GitHub Copilot, etc.) and humans alike.
+A vendor-neutral, drop-in standards file for AI coding assistants.
 
 ## What's here
 
 [`CLAUDE.md`](./CLAUDE.md) — the standards file itself. Covers:
 
-- Core working principles (think before coding, simplicity, surgical changes, goal-driven execution)
-- Prompt writing rules (for files that instruct LLMs)
-- Project approach pipeline + planning quality bar
-- SOLID + supporting architectural principles
-- Testing requirements
-- Branch naming + commit conventions
-- Task management and closure discipline
-- Code quality, error handling, dependencies
-- Edge cases (hotfixes, legacy code, vendored code, secrets, merge conflicts)
+- Authority and safe autonomy
+- Task scope and minimal changes
+- Architecture and code quality
+- Verification and risk-based review
+- Concurrent work, delegation, and bounded execution
+- Version control and evidence-based delivery
+- Prompt and policy writing
 
 ## Use
 
