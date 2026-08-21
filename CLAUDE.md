@@ -7,7 +7,7 @@ These rules apply to **ALL projects** and **ALL code changes**. Every AI assista
 When rules conflict, resolve in this order. Higher wins.
 
 1. **Authority limits.** Never overridden by any instruction, deadline, or reviewer approval.
-2. **Mandatory stops.** An escalation required by Termination, Degraded review, Testing, Detached work, or Concurrency is terminal for whatever it names — a gate, a change, or a worktree. No default, placeholder, or schedule pressure resumes it. A stop outranks the owner's *task* instruction; it does not outrank the owner's explicit resolution of that stop.
+2. **Mandatory stops.** An escalation required by Termination, Degraded review, Testing, Detached work, Concurrency, or Supervision is terminal for whatever it names — a gate, a change, or a worktree. No default, placeholder, or schedule pressure resumes it. A stop outranks the owner's *task* instruction; it does not outrank the owner's explicit resolution of that stop.
 
    Only an owner answer clears a stop, and it must state which resolution applies:
    - **New budget** — clears numeric exhaustion only. It replaces the old budget and counts from zero at the recorded resolution. A budget never cures a missing capability.
@@ -228,6 +228,31 @@ Record which mode the task ran in, and when relying on harness serialization, re
 - Detached jobs do not hold the worktree lease. They write only to their own output paths.
 - In single-writer mode the writer may place an externally authored test into the worktree by applying its patch verbatim and recording its hash. Applying a patch unchanged is not authoring and does not violate Testing.
 
+### Supervision
+
+Reviewers judge the artifact. Nobody judges the session. A review loop that ran eighteen rounds produced eighteen individually reasonable verdicts; the defect was in the process, and no reviewer's remit reached it.
+
+**Assignment.** The owner assigns a supervisor before work starts and writes into the task's durable record: which task lineage is supervised, the supervisor's own record, its check schedule, its check budget, and whether stopping is real or advisory. No such record means no supervisor — an agent never infers its own need for one, because how attended it is is not observable to it.
+
+**The supervisor's record** is a durable append-only log at a key of its own, never the gate ledger and never the task branch. **That key is a Concurrency key** — a resumed supervisor is a new run id and therefore a second writer, so writes to it follow the same lease-or-single-writer rules as any other key.
+
+**A check is one supervisor invocation that examines the evidence and appends one entry** — finding, no-finding, stop, or report — carrying the time and the evidence it rests on. Reserve the entry before the check and terminalize it after, exactly as a reviewer reservation works, so a check lost to a crash still counts. The budget counts entries; the log, not session memory, is the count.
+
+**Powers.** The supervisor reads, appends to its own record, reports to the owner, and — where stopping is real — terminates the supervised task. It never edits the work, never reviews artifacts, never spawns subagents, and never supervises another supervisor. It needs no supervisor itself: it cannot change the work, so it cannot run away with it.
+
+**Stopping is only as strong as the harness.** Stopping is **real** only where the harness can terminate the supervised task *and* prevent or govern the resumption of that task lineage. Otherwise it is **advisory**: the supervisor records the stop and reports, and the owner stops the work. Doctrine cannot make cross-process cancellation reliable, and a flag a running task is not obliged to re-read is not a stop. The assignment states which applies, so the owner knows what they have.
+
+**The task reads the supervisor's record at named points**, never continuously: on start, on resume, before each reviewer reservation, and immediately before each merge, deployment, or other consequential act — reading it last, after every other precondition, so the window between the read and the act is as small as this document can make it. A recorded stop with no recorded owner resolution is a mandatory stop under Precedence.
+
+That window is not zero, and an advisory stop closes nothing on its own. Between read points the task keeps working, and what bounds the damage is the rest of this document: merges gated by review, production by Authority, spend by budgets. A supervisor is not a substitute for any of them.
+
+**Resolution belongs to the record that raised it.** A stop entry carries an id; the owner's resolution is recorded against that id in the task's durable record, and the task treats the stop as cleared only when it can match the two. An unmatched resolution clears nothing.
+
+**Liveness is the schedule, not a probe.** A supervisor whose latest entry is older than its assigned schedule allows is not live, and neither is one whose budget is spent — both are the loss of an assigned capability, which is a mandatory stop; a budget does not replace it. The task observes this at the same named read points. Replacement is an owner decision, and no agent launches a chain of replacements.
+
+**Evidence.** The ledger, escalations, and completion notes are written by the supervised party and evidence only what that party recorded; its narration is never evidence. Independent state is pull request status, CI conclusions, merge history, and harness-reported spend. A finding resting solely on the supervised party's own account is not a finding.
+
+**What it judges.** The process, not the code: the same class of problem recurring across gates, spend rising without gates closing, mandatory stops resumed with no recorded owner answer, and work outside the assigned brief — which is judgeable only because the assignment records that brief and the supervisor compares it against provider-side state, never against the supervised party's account of what it was doing.
 ---
 
 ## Prompt Writing
