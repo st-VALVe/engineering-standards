@@ -163,6 +163,8 @@ Passing review never overrides failing required checks or missing authority.
 
 ## Concurrent Work
 
+Before the first mutation and after resuming work, check available evidence for active or planned writers affecting the same resource.
+
 Allow only one writer to modify a mutable resource at a time.
 
 Solo work requires no coordination mechanism.
@@ -218,6 +220,10 @@ Promise enforced stopping only when the environment can actually observe and sto
 Supervision never replaces authority, verification, review, or budgets.
 
 ## Version Control
+
+Before starting or resuming work in a repository with an accessible upstream, refresh remote references and inspect branch divergence.
+
+Refresh again before publishing or merging. Integrate upstream changes without overwriting local or remote work.
 
 Select an appropriate task branch before editing a protected branch.
 
