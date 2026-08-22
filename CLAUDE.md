@@ -173,7 +173,9 @@ Treat a resource as shared only when another writer is active, planned, or evide
 
 Isolate planned parallel writers or serialize their access through a reliable mechanism.
 
-Give parallel agents separate workspaces whenever possible.
+Before creating an additional workspace, estimate its materialized size and setup cost.
+
+Use the lightest safe isolation method proportionate to the task. Create a separate workspace when its isolation benefit justifies that cost.
 
 Inspect unexpected changes before editing. Preserve work whose ownership is uncertain.
 
