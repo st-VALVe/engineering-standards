@@ -117,6 +117,8 @@ Executable behavior requires automated tests where practical.
 
 Bug fixes require a regression check that demonstrates the defect and its resolution.
 
+Before changing inheritance, lifecycle hooks, subscriptions, shared state mutations, or asynchronous ordering, trace the affected callbacks, observers, re-entry paths, and delayed continuations. Verify runtime behavior through the complete observable sequence; structural or reflection-only checks are insufficient. Test the normal path and any relevant interruption or re-entry path.
+
 Refactoring must preserve existing behavior.
 
 Configuration and documentation changes require an appropriate validation method.
