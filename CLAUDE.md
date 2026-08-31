@@ -135,6 +135,12 @@ Prefer deterministic tests. Mock external systems rather than internal behavior.
 
 Run the relevant checks and record their results.
 
+A report of completed work is not evidence. Confirm outcomes against the system's own state.
+
+Absence of a visible error is not success. Confirm the expected effect occurred.
+
+Establish expected behavior before testing it, so intended design is not reported as a defect.
+
 A failing required check blocks delivery, not investigation or local repair.
 
 ## Review by Impact
@@ -156,6 +162,14 @@ Classify findings as blocking or advisory.
 Fix blocking findings before delivery. Record relevant advisory findings as follow-up work.
 
 Review only the changed candidate and the evidence needed to assess it.
+
+A review request carries the candidate and the question. It must not characterize the candidate, rank its findings, state prior agreement, or map items to earlier conclusions.
+
+Supply evidence as raw material, not as conclusions drawn from it.
+
+When the requester holds a position, present it separately, and only where the reviewer is asked to adjudicate that position.
+
+The requester is usually a party to the outcome. A framed request suppresses findings the reviewer would otherwise make.
 
 Use a finite review budget. When it is exhausted, stop the review loop, preserve the candidate, and report unresolved findings.
 
@@ -254,6 +268,7 @@ Resolve conflicts by understanding both sides and rerun relevant checks afterwar
 Before delivery:
 
 - verify the final diff and scope;
+- scan the exact staged candidate — new content, commit message, and metadata — for secrets and personal data before the first push to any remote; transmission cannot be undone by a later fix;
 - run required checks;
 - complete required reviews;
 - remove debug artifacts introduced by the change;
