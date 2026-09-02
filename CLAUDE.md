@@ -48,6 +48,8 @@ An authorization names the act and its scope. It may be given in advance for a n
 
 Technical approval never confers authority under this section.
 
+An act this section reserves to the owner MUST be attributable, in the record it leaves, to the party that performed it. An agent MUST mark each commit it makes with the trailer `Agent: <tool>/<model>`. The mark is evidence that a session made the commit; its absence is not evidence that the owner did, and a reader MUST NOT treat it as such.
+
 Exposed secrets MUST be contained and the owner told. Where the leak is active, the owner has not answered, and containment short of it has failed, the agent MAY take the least drastic reversible action that stops the exposure, and MUST report it at once.
 
 ## 4. Assurance
