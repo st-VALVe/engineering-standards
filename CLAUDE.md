@@ -160,6 +160,8 @@ When an item is blocked the session MUST record what blocks it, what would unblo
 
 Decisions for the owner MUST be presented together, each stating the decision, the options, the consequence of each, and the session's recommendation.
 
+What the session puts to the owner MUST be written to be acted on. A term the owner has not used, whose meaning the surrounding sentence does not make plain, is explained where it first appears or replaced by one that needs no explanation. Length that does not change what the owner would do is removed. Neither is a licence for vagueness: where a precise term is the right one it is used, and explained.
+
 Repeated work MUST have a stated completion condition and a finite budget, recorded before it starts. Review of one artifact MUST be bounded by a finite number of rounds. When a budget is exhausted the session stops that work, preserves the candidate, and puts the unresolved findings to the owner.
 
 At a checkpoint that carries risk, the session MUST obtain the review the standard requires, covering whether the work is converging on the approved criteria. A checkpoint that finds the plan's premise invalid MUST record the finding and revise the plan.
