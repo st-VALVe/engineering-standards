@@ -4,15 +4,23 @@ A vendor-neutral, drop-in standards file for AI coding assistants.
 
 ## What's here
 
-[`CLAUDE.md`](./CLAUDE.md) — the standards file itself. Covers:
+[`CLAUDE.md`](./CLAUDE.md) — the standards file itself, in two parts.
 
-- Authority and safe autonomy
-- Task scope and minimal changes
-- Architecture and code quality
-- Verification and risk-based review
-- Concurrent work, delegation, and bounded execution
-- Version control and evidence-based delivery
-- Prompt and policy writing
+**Engineering Standard** — what must be true of the work:
+
+- Precedence, and what the owner authorizes
+- Which acts require that authorization
+- How much review a change needs, and when a review stops counting
+- What counts as evidence
+- Scope, tests, secrets, concurrent work
+
+**Session Protocol** — how a session conducts itself so the standard holds:
+
+- Which path applies to the change at hand
+- What is recorded before work starts, and what the plan must address
+- How a review is requested so it is not steered
+- The gates before delivery, and what makes a test run admissible
+- The durable record, and how conclusions are reached
 
 ## Use
 
