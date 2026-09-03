@@ -178,6 +178,8 @@ Where two reviewers are used, each verdict MUST be obtained and recorded before 
 
 Every review obtained MUST be recorded, including one the session does not rely on. A review is never replaced; a further review is added alongside it.
 
+A review is recorded with any limit the reviewer placed on it: what it could not observe, and what its conclusion therefore rests on. That limit travels with the verdict wherever the verdict is relied on. A verdict reported without its limits is a different claim from the one the reviewer made.
+
 After remediation, the reviews the standard requires are obtained again on the new head. A reviewer who confirms its own finding was remediated remains independent of the artifact.
 
 ## 5. Gates before delivery
