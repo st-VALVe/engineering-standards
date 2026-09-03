@@ -174,6 +174,12 @@ A review request MUST NOT say what the reviewer should conclude, rank findings, 
 
 Observations MUST be supplied as the evidence itself, not as the requester's account of it.
 
+A review request MUST give the reviewer read access to the artifact in its repository, not to a prepared extract alone, and MUST invite it to ask for whatever else it needs. What a reviewer asks for is supplied, or the reason it cannot be is recorded and the owner told.
+
+A review made without that access does not satisfy a gate. Where a reviewer names something it could not observe, that gap is closed by the reviewer observing it. Verification by the session does not close it: the session is a party to the outcome.
+
+Access reaches the working tree and not only what is committed, so the standard's scan applies before it is granted.
+
 Where two reviewers are used, each verdict MUST be obtained and recorded before that reviewer sees the other's.
 
 Every review obtained MUST be recorded, including one the session does not rely on. A review is never replaced; a further review is added alongside it.
