@@ -106,7 +106,7 @@ Absence of a locking mechanism is not evidence that no other writer exists.
 
 # Session Protocol
 
-Version 10, 2026-09-02.
+Version 11, 2026-09-07.
 
 How a session conducts itself so that the Engineering Standard holds. Terms, tiers, and authority are defined there.
 
@@ -222,4 +222,4 @@ If the record cannot be reconciled with the state of the repositories, or with p
 
 ## 8. Conclusions
 
-Before entering a conclusion that gates delivery, the session MUST make an observation that could have shown it false, and record what that observation was. Where none is available, the conclusion is recorded as provisional with the missing observation named.
+Before entering a conclusion that gates delivery, the session MUST make an observation that could have shown it false, and record what that observation was. Where none is available, the conclusion is recorded as provisional with the missing observation named. This applies as well to a conclusion about what work to do and how to do it, not only to a conclusion about readiness.
