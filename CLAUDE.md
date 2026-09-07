@@ -1,6 +1,6 @@
 # Engineering Standard
 
-Version 10, 2026-09-02.
+Version 11, 2026-09-07.
 
 What must be true of the work. How a session conducts itself to make it true is the Session Protocol.
 
@@ -67,6 +67,8 @@ A blocking finding attaches to the delivery, not to the head it was raised again
 ## 5. Evidence
 
 A report of completed work is not evidence. An outcome MUST be confirmed against the state of the system itself.
+
+Observable state MUST be read, not recalled. What cannot be read MUST be stated as unobserved.
 
 Absence of a visible error is not success. The expected effect MUST be confirmed to have occurred.
 
