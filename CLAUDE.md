@@ -70,6 +70,8 @@ A report of completed work is not evidence. An outcome MUST be confirmed against
 
 Observable state MUST be read, not recalled. What cannot be read MUST be stated as unobserved.
 
+Observe before arguing. A conclusion an observation could settle MUST NOT go to review until that observation is made, or the attempt is recorded with what stopped it.
+
 Absence of a visible error is not success. The expected effect MUST be confirmed to have occurred.
 
 A result that varies without a change to the system under test, and outside a tolerance the test declares, is a defect in that test or in the system under test. A threshold MUST NOT be adjusted to accommodate an observed failure; it may be changed where a corrected specification requires it, recorded with that reason.
