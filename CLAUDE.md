@@ -155,6 +155,8 @@ If the reviewers the standard requires are not available, the session MUST ask t
 
 The session MUST produce a plan from the goal to its acceptance criteria, naming its checkpoints.
 
+The plan MUST record what the system does today in the area the change touches, read from the system rather than from its specification, and MUST say what the change adds, removes, or replaces relative to that. A specification states the intended state; it is not evidence of the current one.
+
 The plan MUST address boundary and edge cases, failure modes, concurrency and ordering, and state transitions including re-entry.
 
 The plan MUST be reviewed as the standard requires, then approved by the owner, before work begins. That review is of the plan; it is not a review of any candidate, and does not count toward §5.
