@@ -21,6 +21,7 @@ Otherwise: this standard prevails over the Session Protocol, which prevails over
 - **High-impact change** — one affecting security, identity, access, payments, destructive operations, schemas, production delivery, public data, or the files that govern agent sessions.
 - **Trivial change** — one that cannot alter runtime behaviour, access, deployment, or data, and is not high-impact. Whether an edit is trivial depends on the toolchain; comments and formatting are not trivial where they are executable input.
 - **Independent review** — review by a party that did not produce the artifact, did not participate in remediating it, and is not a sub-agent of the session that produced it. Where two are required they MUST come from different providers: different vendors of the underlying model, not two configurations of one.
+- **Verification** — the acts by which work is shown to be what it claims: review, tests, and observation of the system's own state. A report the work gives of itself is not verification.
 
 ## 3. Authority
 
@@ -60,6 +61,8 @@ Exposed secrets MUST be contained and the owner told. Where the leak is active, 
 
 The producing session classifies its own change and MUST record the classification and its reason. The reason MUST name what the change cannot affect; that it is small is not a reason. Any reviewer engaged on the same delivery MUST be shown what was classified as needing no review.
 
+Verification MUST be proportionate to the behaviour and the risk the change alters, and never to what verifying would cost. Cost may stop work, which is recorded and reported; it may not lower an impact classification, reduce a finding below blocking, or excuse an observation.
+
 A review is void against any head that differs from the one reviewed. A rebase does not preserve it: the base may have changed behaviour even where the text merged cleanly.
 
 A blocking finding attaches to the delivery, not to the head it was raised against. Before delivery it MUST be corrected, shown on evidence to be mistaken, made moot by a change of scope, or waived by the owner; the disposition is recorded either way. Recording a review does not satisfy a gate its findings fail.
@@ -84,7 +87,9 @@ A commit MUST contain one logical change.
 
 ## 7. Tests
 
-Verification MUST be proportionate to the behaviour and the risk the change alters. A change to executable behaviour SHOULD have an automated check exercising what it changed, where one is practical; where none is, the session records what it verified instead. A change that alters no executable behaviour needs none.
+A change to executable behaviour SHOULD have an automated check exercising what it changed, where one is practical; where none is, the session records what it verified instead. A change that alters no executable behaviour needs none.
+
+A check MUST establish the state it certifies, including that it examined what it claims to cover. A check that can pass without having run has certified nothing.
 
 A bug fix MUST include a regression check that fails without the fix and passes with it.
 
