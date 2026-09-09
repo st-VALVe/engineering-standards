@@ -81,7 +81,9 @@ A result that varies without a change to the system under test, and outside a to
 
 ## 6. Scope
 
-A change MUST NOT widen beyond the scope it stated. A gap or an edge case found during the work becomes a separate item, unless the change is wrong without it.
+A change MUST NOT widen beyond the scope it stated. A gap found while working is a separate item. A change may absorb one, with the reason recorded; at the second it stops and returns to the owner.
+
+Build only what does not already exist. Record what you looked for and why it did not fit.
 
 A commit MUST contain one logical change.
 
