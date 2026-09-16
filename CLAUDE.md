@@ -1,6 +1,6 @@
 # Engineering Standard
 
-Version 10, 2026-09-02.
+Version 12, 2026-09-16.
 
 What must be true of the work. How a session conducts itself to make it true is the Session Protocol.
 
@@ -21,6 +21,7 @@ Otherwise: this standard prevails over the Session Protocol, which prevails over
 - **High-impact change** — one affecting security, identity, access, payments, destructive operations, schemas, production delivery, public data, or the files that govern agent sessions.
 - **Trivial change** — one that cannot alter runtime behaviour, access, deployment, or data, and is not high-impact. Whether an edit is trivial depends on the toolchain; comments and formatting are not trivial where they are executable input.
 - **Independent review** — review by a party that did not produce the artifact, did not participate in remediating it, and is not a sub-agent of the session that produced it. Where two are required they MUST come from different providers: different vendors of the underlying model, not two configurations of one.
+- **Verification** — the acts by which work is shown to be what it claims: review, tests, and observation of the system's own state. A report the work gives of itself is not verification.
 
 ## 3. Authority
 
@@ -60,6 +61,8 @@ Exposed secrets MUST be contained and the owner told. Where the leak is active, 
 
 The producing session classifies its own change and MUST record the classification and its reason. The reason MUST name what the change cannot affect; that it is small is not a reason. Any reviewer engaged on the same delivery MUST be shown what was classified as needing no review.
 
+Verification MUST be proportionate to the behaviour and the risk the change alters, and never to what verifying would cost. Cost may stop work, which is recorded and reported; it may not lower an impact classification, reduce a finding below blocking, or excuse an observation.
+
 A review is void against any head that differs from the one reviewed. A rebase does not preserve it: the base may have changed behaviour even where the text merged cleanly.
 
 A blocking finding attaches to the delivery, not to the head it was raised against. Before delivery it MUST be corrected, shown on evidence to be mistaken, made moot by a change of scope, or waived by the owner; the disposition is recorded either way. Recording a review does not satisfy a gate its findings fail.
@@ -68,19 +71,27 @@ A blocking finding attaches to the delivery, not to the head it was raised again
 
 A report of completed work is not evidence. An outcome MUST be confirmed against the state of the system itself.
 
+Observable state MUST be read, not recalled. What cannot be read MUST be stated as unobserved.
+
+Observe before arguing. A conclusion an observation could settle MUST NOT go to review until that observation is made, or the attempt is recorded with what stopped it.
+
 Absence of a visible error is not success. The expected effect MUST be confirmed to have occurred.
 
 A result that varies without a change to the system under test, and outside a tolerance the test declares, is a defect in that test or in the system under test. A threshold MUST NOT be adjusted to accommodate an observed failure; it may be changed where a corrected specification requires it, recorded with that reason.
 
 ## 6. Scope
 
-A change MUST NOT widen beyond the scope it stated. A gap or an edge case found during the work becomes a separate item, unless the change is wrong without it.
+A change MUST NOT widen beyond the scope it stated. A gap found while working is a separate item. A change may absorb one, with the reason recorded; at the second it stops and returns to the owner.
+
+Build only what does not already exist. Record what you looked for and why it did not fit.
 
 A commit MUST contain one logical change.
 
 ## 7. Tests
 
-Verification MUST be proportionate to the behaviour and the risk the change alters. A change to executable behaviour SHOULD have an automated check exercising what it changed, where one is practical; where none is, the session records what it verified instead. A change that alters no executable behaviour needs none.
+A change to executable behaviour SHOULD have an automated check exercising what it changed, where one is practical; where none is, the session records what it verified instead. A change that alters no executable behaviour needs none.
+
+A check MUST establish the state it certifies, including that it examined what it claims to cover. A check that can pass without having run has certified nothing.
 
 A bug fix MUST include a regression check that fails without the fix and passes with it.
 
@@ -106,7 +117,7 @@ Absence of a locking mechanism is not evidence that no other writer exists.
 
 # Session Protocol
 
-Version 10, 2026-09-02.
+Version 12, 2026-09-16.
 
 How a session conducts itself so that the Engineering Standard holds. Terms, tiers, and authority are defined there.
 
@@ -146,6 +157,8 @@ If the reviewers the standard requires are not available, the session MUST ask t
 
 The session MUST produce a plan from the goal to its acceptance criteria, naming its checkpoints.
 
+The plan MUST record what the system does today in the area the change touches, read from the system rather than from its specification, and MUST say what the change adds, removes, or replaces relative to that. A specification states the intended state; it is not evidence of the current one.
+
 The plan MUST address boundary and edge cases, failure modes, concurrency and ordering, and state transitions including re-entry.
 
 The plan MUST be reviewed as the standard requires, then approved by the owner, before work begins. That review is of the plan; it is not a review of any candidate, and does not count toward §5.
@@ -160,6 +173,8 @@ When an item is blocked the session MUST record what blocks it, what would unblo
 
 Decisions for the owner MUST be presented together, each stating the decision, the options, the consequence of each, and the session's recommendation.
 
+Delegate work as a problem, not only as steps: give the goal and the evidence, and ask the executor how it would approach it. Record why when its objection is not adopted. Authority and gates are stated as fixed.
+
 What the session puts to the owner MUST be written to be acted on. A term the owner has not used, whose meaning the surrounding sentence does not make plain, is explained where it first appears or replaced by one that needs no explanation. Length that does not change what the owner would do is removed. Neither is a licence for vagueness: where a precise term is the right one it is used, and explained.
 
 Repeated work MUST have a stated completion condition and a finite budget, recorded before it starts. Review of one artifact MUST be bounded by a finite number of rounds. When a budget is exhausted the session stops that work, preserves the candidate, and puts the unresolved findings to the owner.
@@ -168,7 +183,9 @@ At a checkpoint that carries risk, the session MUST obtain the review the standa
 
 ## 4. Review requests
 
-A review request MUST contain the artifact, the observations, the acceptance criteria the artifact is meant to meet, anything in the same delivery classified as needing no review, and a question whose answer is not limited to an enumeration. It MUST ask the reviewer to name anything material the request did not ask about.
+A review request MUST contain the artifact, the observations, the acceptance criteria the artifact is meant to meet, anything in the same delivery classified as needing no review, a question whose answer is not limited to an enumeration, and the problem the artifact solves, so the reviewer can say how it would solve it. It MUST ask the reviewer to name anything material the request did not ask about.
+
+A reviewer is asked to propose a resolution for each blocking finding, or to say it has none — the finding blocks either way — and to say why it accepts what it accepts. If a reviewer's resolution is adopted, a different reviewer checks it.
 
 A review request MUST NOT say what the reviewer should conclude, rank findings, report prior agreement or prior findings, or carry a list of properties to check written for this artifact. A standing checklist, the same for every artifact of its kind, is permitted. Acceptance criteria state what the artifact is meant to achieve; they are not such a list, and the reviewer is not confined to them.
 
@@ -222,4 +239,4 @@ If the record cannot be reconciled with the state of the repositories, or with p
 
 ## 8. Conclusions
 
-Before entering a conclusion that gates delivery, the session MUST make an observation that could have shown it false, and record what that observation was. Where none is available, the conclusion is recorded as provisional with the missing observation named.
+Before entering a conclusion that gates delivery, the session MUST make an observation that could have shown it false, and record what that observation was. Where none is available, the conclusion is recorded as provisional with the missing observation named. This applies as well to a conclusion about what work to do and how to do it, not only to a conclusion about readiness.
