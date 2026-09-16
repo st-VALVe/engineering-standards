@@ -1,6 +1,6 @@
 # Engineering Standard
 
-Version 12, 2026-09-16.
+Version 13, 2026-09-17.
 
 What must be true of the work. How a session conducts itself to make it true is the Session Protocol.
 
@@ -83,7 +83,7 @@ A result that varies without a change to the system under test, and outside a to
 
 A change MUST NOT widen beyond the scope it stated. A gap found while working is a separate item. A change may absorb one, with the reason recorded; at the second it stops and returns to the owner.
 
-Build only what does not already exist. Record what you looked for and why it did not fit.
+Build or maintain only what a proven existing solution does not already provide. Record what you looked for and why it did not fit.
 
 A commit MUST contain one logical change.
 
@@ -117,7 +117,7 @@ Absence of a locking mechanism is not evidence that no other writer exists.
 
 # Session Protocol
 
-Version 12, 2026-09-16.
+Version 13, 2026-09-17.
 
 How a session conducts itself so that the Engineering Standard holds. Terms, tiers, and authority are defined there.
 
