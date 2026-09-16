@@ -1,6 +1,6 @@
 # Engineering Standard
 
-Version 11, 2026-09-07.
+Version 12, 2026-09-16.
 
 What must be true of the work. How a session conducts itself to make it true is the Session Protocol.
 
@@ -117,7 +117,7 @@ Absence of a locking mechanism is not evidence that no other writer exists.
 
 # Session Protocol
 
-Version 11, 2026-09-07.
+Version 12, 2026-09-16.
 
 How a session conducts itself so that the Engineering Standard holds. Terms, tiers, and authority are defined there.
 
@@ -173,6 +173,8 @@ When an item is blocked the session MUST record what blocks it, what would unblo
 
 Decisions for the owner MUST be presented together, each stating the decision, the options, the consequence of each, and the session's recommendation.
 
+Delegate work as a problem, not only as steps: give the goal and the evidence, and ask the executor how it would approach it. Record why when its objection is not adopted. Authority and gates are stated as fixed.
+
 What the session puts to the owner MUST be written to be acted on. A term the owner has not used, whose meaning the surrounding sentence does not make plain, is explained where it first appears or replaced by one that needs no explanation. Length that does not change what the owner would do is removed. Neither is a licence for vagueness: where a precise term is the right one it is used, and explained.
 
 Repeated work MUST have a stated completion condition and a finite budget, recorded before it starts. Review of one artifact MUST be bounded by a finite number of rounds. When a budget is exhausted the session stops that work, preserves the candidate, and puts the unresolved findings to the owner.
@@ -181,7 +183,9 @@ At a checkpoint that carries risk, the session MUST obtain the review the standa
 
 ## 4. Review requests
 
-A review request MUST contain the artifact, the observations, the acceptance criteria the artifact is meant to meet, anything in the same delivery classified as needing no review, and a question whose answer is not limited to an enumeration. It MUST ask the reviewer to name anything material the request did not ask about.
+A review request MUST contain the artifact, the observations, the acceptance criteria the artifact is meant to meet, anything in the same delivery classified as needing no review, a question whose answer is not limited to an enumeration, and the problem the artifact solves, so the reviewer can say how it would solve it. It MUST ask the reviewer to name anything material the request did not ask about.
+
+A reviewer is asked to propose a resolution for each blocking finding, or to say it has none — the finding blocks either way — and to say why it accepts what it accepts. If a reviewer's resolution is adopted, a different reviewer checks it.
 
 A review request MUST NOT say what the reviewer should conclude, rank findings, report prior agreement or prior findings, or carry a list of properties to check written for this artifact. A standing checklist, the same for every artifact of its kind, is permitted. Acceptance criteria state what the artifact is meant to achieve; they are not such a list, and the reviewer is not confined to them.
 
