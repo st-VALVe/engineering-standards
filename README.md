@@ -2,7 +2,7 @@
 
 Practical rules for people and coding agents, balancing code quality, reliability and delivery speed.
 
-- [`CLAUDE.md`](./CLAUDE.md) is the authoritative English standard, version 15. It combines engineering practices with a focused agent supplement and replaces the former separate Session Protocol.
+- [`CLAUDE.md`](./CLAUDE.md) is the authoritative English standard, version 16. It combines engineering practices with a focused agent supplement and replaces the former separate Session Protocol.
 - [`ENGINEERING_STANDARD.ru.md`](./ENGINEERING_STANDARD.ru.md) is the Russian reading translation of the same version. Update and review both texts together; English governs if they differ.
 
 The standard covers simplicity, architecture, existing code style, tests, dependencies, Git, review, task completion and authority. Agents finish authorized local work and report after committing by default. Pushes, PRs, merges and deployments require further owner instructions; instructions already covering the work do not need repeated approval.

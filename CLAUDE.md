@@ -1,6 +1,6 @@
 # Engineering Standard
 
-Version 15, 2026-09-21.
+Version 16, 2026-09-24.
 
 These rules apply to people and AI agents working on a project. Security and authority requirements apply regardless of task size.
 
@@ -140,8 +140,10 @@ The owner is the person who authorizes actions under §12. Delivery places a cha
 - By default, after a local commit tell the owner what changed, verification, review status and remaining limits.
 - Push, PR creation, merge and deployment require additional owner instructions. Do not ask again if existing instructions already cover the current work.
 - For independent review, use a separate context without your own deliberations.
-- Before repeated investigation or review, set one finite shared budget. Fixes do not reset it; one extension is allowed with its reason and size recorded.
-- At budget exhaustion, preserve the result and report blockers.
+- Before repeated investigation or review, record one finite shared budget for the same problem in substantive attempts and/or measurable tokens. Reaching any declared limit exhausts the budget. Each new investigation or review run, including a failed run or post-fix reassessment, counts as an attempt; polling or waiting for the same run does not.
+- Fixes, splitting or renaming the same work do not reset its budget. The agent may extend it once, recording the reason and additional allowance; further extensions require an owner decision.
+- Elapsed minutes are not an investigation or review budget. Do not interrupt a running assessment or request an extension solely because time passed. Explicit owner deadlines and actual tool/resource failures still apply; a polling timeout is not a failure if the underlying run is still active. Diagnose suspected stalls using tool-specific health/progress evidence; stop or retry a confirmed failed or hung run within the attempt budget. Silence from a tool that buffers its output does not by itself prove a hang.
+- At budget exhaustion, stop only the affected repeat cycle, preserve its results and report unresolved blockers. Continue independent authorized work while awaiting reviews or owner decisions; do not stop the session unless no such work remains. An interrupted review without a verdict does not satisfy the review gate.
 - Missing required review blocks delivery, not safe investigation or reversible preparation. Exceptions require a direct owner decision naming the rule and scope.
 
 ## 14. Instructions and prompts
