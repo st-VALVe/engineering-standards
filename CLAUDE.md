@@ -1,6 +1,6 @@
 # Engineering Standard
 
-Version 16, 2026-09-24.
+Version 17, 2026-10-13.
 
 These rules apply to people and AI agents working on a project. Security and authority requirements apply regardless of task size.
 
@@ -18,6 +18,7 @@ The owner is the person who authorizes actions under §12. Delivery places a cha
 
 ## 2. Working approach
 
+- Before starting, check that available disk space and RAM are sufficient for the task.
 - Before making changes, read applicable project instructions, the README and affected code.
 - For ambiguous or multi-step work, make a brief plan with checks; a simple task needs no separate document.
 - Before implementation, consider relevant boundaries, failures, concurrent access, event ordering and repeated execution. Consider applicable scenarios rather than completing a universal questionnaire.
@@ -108,6 +109,8 @@ The owner is the person who authorizes actions under §12. Delivery places a cha
 - Close a task after its criteria are met. If they include deployment, merging alone is insufficient; a research task need not require deployment.
 - Do not close a parent initiative merely because a subtask finished without confirming its full scope and authority to close it.
 - Keep important decisions and evidence in established project locations. Do not add a report duplicating the PR, CI and task.
+- Clean up temporary files after confirming the deletion list with the owner. Preserve deliverables and required evidence.
+- Remove the task’s temporary branches and worktrees once their changes are integrated and nobody uses them. Check for uncommitted and untracked files first; follow §12.
 
 ## 11. Special cases
 
