@@ -1,6 +1,6 @@
 # Engineering Standard
 
-Version 17, 2026-10-13.
+Version 18, 2026-10-19.
 
 These rules apply to people and AI agents working on a project. Security and authority requirements apply regardless of task size.
 
@@ -143,6 +143,12 @@ The owner is the person who authorizes actions under §12. Delivery places a cha
 - By default, after a local commit tell the owner what changed, verification, review status and remaining limits.
 - Push, PR creation, merge and deployment require additional owner instructions. Do not ask again if existing instructions already cover the current work.
 - For independent review, use a separate context without your own deliberations.
+- Delegate each task to the lowest model tier that reliably completes it. Set the model explicitly on every delegation; do not inherit the coordinator's model by default.
+- Lowest tier: mechanical steps — lookups, checks, applying a defined fix list, reading logs. Middle tier: implementation from a clear brief. Top tier: planning, coordination and independent review.
+- Escalate a tier only on evidence that the lower tier failed, not in advance.
+- For a narrow judgment (pass/fail against a threshold, triage, ranking), prefer a structured-judgment tool over a new agent. Give it raw evidence, not a conclusion.
+- Keep agent runs bounded: split long work into steps that each start from a compact handover (state, paths, open items), not the full history.
+- Keep context lean: request digests instead of full dumps; do not re-read large outputs or images already assessed.
 - Before repeated investigation or review, record one finite shared budget for the same problem in substantive attempts and/or measurable tokens. Reaching any declared limit exhausts the budget. Each new investigation or review run, including a failed run or post-fix reassessment, counts as an attempt; polling or waiting for the same run does not.
 - Fixes, splitting or renaming the same work do not reset its budget. The agent may extend it once, recording the reason and additional allowance; further extensions require an owner decision.
 - Elapsed minutes are not an investigation or review budget. Do not interrupt a running assessment or request an extension solely because time passed. Explicit owner deadlines and actual tool/resource failures still apply; a polling timeout is not a failure if the underlying run is still active. Diagnose suspected stalls using tool-specific health/progress evidence; stop or retry a confirmed failed or hung run within the attempt budget. Silence from a tool that buffers its output does not by itself prove a hang.
